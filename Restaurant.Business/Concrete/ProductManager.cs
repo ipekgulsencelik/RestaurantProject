@@ -33,6 +33,11 @@ namespace Restaurant.Business.Concrete
             return _productDAL.GetListAll();
         }
 
+        public List<Product> TGetProductsWithCategories()
+        {
+            return _productDAL.GetProductsWithCategories();
+        }
+
         public void TUpdate(Product entity)
         {
             _productDAL.Update(entity);

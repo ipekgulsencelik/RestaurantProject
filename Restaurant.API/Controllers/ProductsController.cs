@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Restaurant.Business.Abstract;
+using Restaurant.DataAccess.Concrete;
 using Restaurant.DTO.DTOs.ProductDTOs;
 using Restaurant.Entity.Entities;
 
@@ -24,6 +26,23 @@ namespace Restaurant.API.Controllers
         {
             var value = _mapper.Map<List<ResultProductDTO>>(_productService.TGetListAll());
             return Ok(value);
+        }
+
+        [HttpGet("ProductListWithCategory")]
+        public IActionResult ProductListWithCategory()
+        {
+            var context = new RestaurantContext();
+            var values = context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategory
+            {
+                Description = y.Description,
+                ImageURL = y.ImageURL,
+                Price = y.Price,
+                ProductID = y.ProductID,
+                ProductName = y.Name,
+                ProductStatus = y.Status,
+                CategoryName = y.Category.Name
+            });
+            return Ok(values.ToList());
         }
 
         [HttpPost]

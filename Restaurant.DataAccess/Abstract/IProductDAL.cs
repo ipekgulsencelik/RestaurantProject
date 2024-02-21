@@ -4,5 +4,6 @@ namespace Restaurant.DataAccess.Abstract
 {
     public interface IProductDAL : IGenericDAL<Product>
     {
+        List<Product> GetProductsWithCategories();
     }
 }

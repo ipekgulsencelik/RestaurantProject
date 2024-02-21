@@ -50,6 +50,7 @@ namespace Restaurant.API.Mappings
             CreateMap<GetProductDTO, Product>().ReverseMap();
             CreateMap<UpdateProductDTO, Product>().ReverseMap();
             CreateMap<ResultProductDTO, Product>().ReverseMap();
+            CreateMap<ResultProductWithCategory, Product>().ReverseMap();
 
             CreateMap<CreateSocialMediaDTO, SocialMedia>().ReverseMap();
             CreateMap<GetSocialMediaDTO, SocialMedia>().ReverseMap();
