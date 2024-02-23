@@ -32,7 +32,7 @@ namespace Restaurant.API.Controllers
             _categoryService.TAdd(new Category()
             {
                 Name = createCategoryDTO.Name,
-                Status = true
+                Status = createCategoryDTO.Status
             });
             return Ok("Kategori Eklendi");
         }
@@ -63,5 +63,12 @@ namespace Restaurant.API.Controllers
             });
             return Ok("Kategori Güncellendi");
         }
-    }
+
+		[HttpGet("UpdateStatus/{id}")]
+		public IActionResult UpdateStatus(int id)
+		{
+			_categoryService.TUpdateStatus(id);
+			return Ok("Kategorinin Durum Değeri Güncellendi");
+		}
+	}
 }

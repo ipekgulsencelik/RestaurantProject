@@ -37,5 +37,10 @@ namespace Restaurant.Business.Concrete
         {
             _categoryDAL.Update(entity);
         }
-    }
+
+		public void TUpdateStatus(int id)
+		{
+			_categoryDAL.UpdateStatus(id);
+		}
+	}
 }

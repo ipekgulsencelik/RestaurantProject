@@ -2,7 +2,8 @@
 
 namespace Restaurant.DataAccess.Abstract
 {
-    public interface ICategoryDAL : IGenericDAL<Category>
-    {
-    }
+	public interface ICategoryDAL : IGenericDAL<Category>
+	{
+		void UpdateStatus(int id);
+	}
 }

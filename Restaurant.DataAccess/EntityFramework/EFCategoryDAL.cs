@@ -10,5 +10,21 @@ namespace Restaurant.DataAccess.EntityFramework
         public EFCategoryDAL(RestaurantContext context) : base(context)
         {
         }
-    }
+
+		public void UpdateStatus(int id)
+		{
+			var context = new RestaurantContext();
+			var category = context.Categories.Where(x => x.CategoryID == id).FirstOrDefault();
+			if (category.Status == true)
+			{
+				category.Status = false;
+			}
+			else
+			{
+				category.Status = true;
+			}
+			context.Update(category);
+			context.SaveChanges();
+		}
+	}
 }
